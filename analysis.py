@@ -9,10 +9,10 @@ def analysis(file, user_id):
         return 0
     else:
         df = pd.read_json(file)
-        times = df[df['user_id'] == user_id].count()
+        times = df[df['user_id'] == user_id]['minutes'].count()
         minutes = df[df['user_id'] == user_id]['minutes'].sum()
         return times, minutes
 
 if __name__ == '__main__':
-    a = analysis("user_study.json", 223684)
-    print(a)
+    t,m = analysis("user_study.json", 223684)
+    print(t,m)
